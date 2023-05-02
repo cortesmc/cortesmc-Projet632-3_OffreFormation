@@ -1,4 +1,5 @@
 SELECT m.code, pr.code AS pre_requis_code
 FROM Modules m
 LEFT JOIN Pre_Requis p ON m.idMod = p.idMod
-LEFT JOIN Modules pr ON p.idModPR = pr.idMod;
+LEFT JOIN Modules pr ON p.idModPR = pr.idMod
+WHERE pr.code IS NOT NULL
