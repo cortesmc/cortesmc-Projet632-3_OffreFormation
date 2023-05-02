@@ -28,10 +28,10 @@ class Offre_Formation:
         btnCookies = self.driver.find_element(By.XPATH,("/html/body/div[4]/div[3]/button[1]"))
         btnCookies.click()
 
-        self.login("cortesmc", "CarlosAndres_149")
+        self.login("utilisateur", "Mot de passe")
         
         self.getToModules()
-        self.displayModules('idu', 4)
+        self.displayModules('idu')
         
         self.setModules(gestionBD)
 
@@ -42,7 +42,7 @@ class Offre_Formation:
         #navigator = self.driver.fing_element(By.XPATH,('/html/body/div[3]/div/div/div/div[1]/ul/li[3]/ul/li[2]/a'))
         self.driver.get(navigator.get_attribute('href'))
         
-    def displayModules(self,specialite,semestre):
+    def displayModules(self,specialite):
         navigator = self.driver.find_element(By.ID,(f'{specialite}_5'))
         navigator.click()
 
@@ -89,7 +89,6 @@ class Offre_Formation:
                 self.driver.back()
                 cpt += 1
             except:
-                print("Error on 77")
                 break
 
     def set_responsable(self, gestionBD, code_module):
@@ -176,7 +175,6 @@ class Offre_Formation:
             id_mod = gestionBD.get_module_id(code_module)
             temp = self.driver.find_element(By.XPATH,(f'/html/body/div[2]/div/div/div/div[2]/div/div[5]/div[3]/div/div[2]/div[2]/div[10]/div[1]/div[2]/div/p')).text
             temp = temp.replace(' ', '')
-            print(temp)
 
             for elem in list_codes:
                 if temp.__contains__(elem[2]):
